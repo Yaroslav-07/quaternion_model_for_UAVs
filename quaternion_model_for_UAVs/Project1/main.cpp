@@ -1,23 +1,23 @@
-#include <iostream>
+п»ї#include <iostream>
 
-// Сначала GLAD
+// РЎРЅР°С‡Р°Р»Р° GLAD
 #include <glad/glad.h>
-// Потом GLFW
+// РџРѕС‚РѕРј GLFW
 #include <GLFW/glfw3.h>
 
 const unsigned int WINDOW_WIDTH = 800;
 const unsigned int WINDOW_HEIGHT = 600;
 
-// Callback, вызывается при изменении размера окна
+// Callback, РІС‹Р·С‹РІР°РµС‚СЃСЏ РїСЂРё РёР·РјРµРЅРµРЅРёРё СЂР°Р·РјРµСЂР° РѕРєРЅР°
 void framebuffer_size_callback(GLFWwindow* window, int width, int height)
 {
     glViewport(0, 0, width, height);
 }
 
-// Обработка ввода с клавиатуры
+// РћР±СЂР°Р±РѕС‚РєР° РІРІРѕРґР° СЃ РєР»Р°РІРёР°С‚СѓСЂС‹
 void processInput(GLFWwindow* window)
 {
-    // Если нажали ESC — закрываем окно
+    // Р•СЃР»Рё РЅР°Р¶Р°Р»Рё ESC вЂ” Р·Р°РєСЂС‹РІР°РµРј РѕРєРЅРѕ
     if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
     {
         glfwSetWindowShouldClose(window, true);
@@ -26,19 +26,19 @@ void processInput(GLFWwindow* window)
 
 int main()
 {
-    // 1. Инициализируем GLFW
+    // 1. РРЅРёС†РёР°Р»РёР·РёСЂСѓРµРј GLFW
     if (!glfwInit())
     {
         std::cerr << "Failed to initialize GLFW" << std::endl;
         return -1;
     }
 
-    // 2. Настраиваем версию OpenGL: 3.3 Core
+    // 2. РќР°СЃС‚СЂР°РёРІР°РµРј РІРµСЂСЃРёСЋ OpenGL: 3.3 Core
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-    // 3. Создаём окно
+    // 3. РЎРѕР·РґР°С‘Рј РѕРєРЅРѕ
     GLFWwindow* window = glfwCreateWindow(
         WINDOW_WIDTH,
         WINDOW_HEIGHT,
@@ -54,10 +54,10 @@ int main()
         return -1;
     }
 
-    // Делаем контекст окна текущим
+    // Р”РµР»Р°РµРј РєРѕРЅС‚РµРєСЃС‚ РѕРєРЅР° С‚РµРєСѓС‰РёРј
     glfwMakeContextCurrent(window);
 
-    // 4. Инициализируем GLAD (после создания контекста!)
+    // 4. РРЅРёС†РёР°Р»РёР·РёСЂСѓРµРј GLAD (РїРѕСЃР»Рµ СЃРѕР·РґР°РЅРёСЏ РєРѕРЅС‚РµРєСЃС‚Р°!)
     if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
     {
         std::cerr << "Failed to initialize GLAD" << std::endl;
@@ -66,26 +66,26 @@ int main()
         return -1;
     }
 
-    // 5. Устанавливаем начальный viewport
+    // 5. РЈСЃС‚Р°РЅР°РІР»РёРІР°РµРј РЅР°С‡Р°Р»СЊРЅС‹Р№ viewport
     glViewport(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
     glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
 
-    // 6. Главный цикл приложения
+    // 6. Р“Р»Р°РІРЅС‹Р№ С†РёРєР» РїСЂРёР»РѕР¶РµРЅРёСЏ
     while (!glfwWindowShouldClose(window))
     {
-        // Обрабатываем ввод
+        // РћР±СЂР°Р±Р°С‚С‹РІР°РµРј РІРІРѕРґ
         processInput(window);
 
-        // Очищаем экран (только цвет, пока без отрисовки объектов)
-        glClearColor(0.1f, 0.1f, 0.2f, 1.0f); // тёмно-синий фон
+        // РћС‡РёС‰Р°РµРј СЌРєСЂР°РЅ (С‚РѕР»СЊРєРѕ С†РІРµС‚, РїРѕРєР° Р±РµР· РѕС‚СЂРёСЃРѕРІРєРё РѕР±СЉРµРєС‚РѕРІ)
+        glClearColor(0.1f, 0.1f, 0.2f, 1.0f); // С‚С‘РјРЅРѕ-СЃРёРЅРёР№ С„РѕРЅ
         glClear(GL_COLOR_BUFFER_BIT);
 
-        // Меняем местами буферы и обрабатываем события
+        // РњРµРЅСЏРµРј РјРµСЃС‚Р°РјРё Р±СѓС„РµСЂС‹ Рё РѕР±СЂР°Р±Р°С‚С‹РІР°РµРј СЃРѕР±С‹С‚РёСЏ
         glfwSwapBuffers(window);
         glfwPollEvents();
     }
 
-    // 7. Освобождаем ресурсы
+    // 7. РћСЃРІРѕР±РѕР¶РґР°РµРј СЂРµСЃСѓСЂСЃС‹
     glfwDestroyWindow(window);
     glfwTerminate();
 
