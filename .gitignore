@@ -1,0 +1,35 @@
+# Build results
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+ipch/
+*.obj
+*.pch
+*.pdb
+*.exe
+*.ilk
+*.log
+*.tlog
+*.idb
+*.cachefile
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+
+# CMake (если вдруг потом пригодится)
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+
+# Backup / misc
+*.opensdf
+*.sdf
+*.db
+*.opendb
+
+# Other
+*.tmp
+*.log
